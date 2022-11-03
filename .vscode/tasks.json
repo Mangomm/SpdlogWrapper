@@ -1,0 +1,18 @@
+//使用shell脚本加cmake代替vscode的tasks内容编译
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "spdlog_test", //任务名称 
+            "type": "shell", //运行task的平台，一般是shell
+
+            //运行你shell的命令,可为bash ./build.sh,注意：之前因为我vscode打开的是项目文件夹的上一层文件夹，所以导致无法在当前目录找到build.sh运行
+            //这样需要加上你的项目名称，即./xxx/build.sh,同样其它路径也要注意是否需要加上，所以最好是打开项目所在目录否则就会出现路径对不上无法执行编译
+            "command": "cd  build && make", 
+            "group": {
+                "kind": "build", //设置为build组，这样当你在vscode中执行build命令时，//就能自动执行"command"中的命令了                       
+                "isDefault": true
+            }
+        }
+    ]
+}
